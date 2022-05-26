@@ -1,0 +1,7 @@
+.search-root {
+	flex: .5;
+	display: flex;
+	padding: 0 30px 0 30px;
+	align-items: center;
+	justify-content: center;
+}

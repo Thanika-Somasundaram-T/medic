@@ -10,8 +10,7 @@ function App() {
 	const [ state, dispatch ] = useDataLayerValue();
 	return (
 		<div className="App">
-			{ state.sayHi }
-				<CssBaseline />
+			<CssBaseline />
 			<Header/>
 			<Display/>
 			<Maps/>

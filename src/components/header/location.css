@@ -1,0 +1,7 @@
+.location-root {
+	flex: .3;
+	display: flex;
+	padding-right: 50px;
+	align-items: center;
+	justify-content: center;
+}
