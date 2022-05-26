@@ -1,14 +1,16 @@
 
 export const initialState = {
-sayHi: 'hiContext Api'
+	latitude: 0,
+	longitude: 0,
 };
 
 const reducer = ( state, action ) => {
 	switch(action.type) {
-		case 'SET_OPTION':
+		case 'SET_CO-ORDINATES':
 			return ({
 				...state,
-				option: action.option,
+				latitude: action.latitude,
+				longitude: action.longitude,
 			});
 		default:
 			return state;  
