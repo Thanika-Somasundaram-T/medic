@@ -2,6 +2,7 @@
 export const initialState = {
 	latitude: 0,
 	longitude: 0,
+	location: 'mm',
 };
 
 const reducer = ( state, action ) => {
@@ -12,6 +13,11 @@ const reducer = ( state, action ) => {
 				latitude: action.latitude,
 				longitude: action.longitude,
 			});
+		case 'SET_LOCATION':
+			return ({
+				...state,
+				location: action.location,
+			})
 		default:
 			return state;  
 	}

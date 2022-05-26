@@ -1,5 +1,4 @@
 import React from 'react';
-import { Autocomplete } from '@react-google-maps/api';
 import { InputBase } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import Search from './search';

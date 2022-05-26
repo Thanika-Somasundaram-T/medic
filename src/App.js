@@ -3,8 +3,8 @@ import './App.css';
 import Header from './components/header/header';
 import Display from './components/display/display';
 import Maps from './components/maps/maps';
-import axios from 'axios';
 import { useDataLayerValue } from './dataLayer';
+import { useJsApiLoader } from '@react-google-maps/api';
 
 function App() {
 	const [ state, dispatch ] = useDataLayerValue();
@@ -15,7 +15,13 @@ function App() {
 			longitude: position.coords.longitude,
 		}));
 	}, []);
-	console.log(state)
+
+	const { isLoaded } = useJsApiLoader({
+		googleMapsApiKey: 'AIzaSyBZ0SmSKra8deD2NxtWbjPtCz2epx-8tGs',
+		libraries: ['places'],
+	});
+	if (!isLoaded) return <div>Loading...</div>
+	console.log(state);
 	return (
 		<div className="App">
 			<Header />
