@@ -1,3 +1,5 @@
-.display {
-	background-color: black;
+.display-root {
+	flex: .6;
+	height: 100%;
+	background-color: white;
 }

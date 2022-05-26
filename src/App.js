@@ -11,9 +11,11 @@ function App() {
 	return (
 		<div className="App">
 			<CssBaseline />
-			<Header/>
-			<Display/>
-			<Maps/>
+			<Header />
+			<div className='app-body'>
+				<Display />
+				<Maps />
+			</div>
 		</div>
 	);
 }
