@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './maps.css';
 import { GoogleMap, Marker } from '@react-google-maps/api';
 import { useDataLayerValue } from '../../dataLayer';
+import { getFormHelperTextUtilityClasses } from '@mui/material';
 
 const Maps = () => {
 	const [map, setMap] = useState('');
@@ -16,7 +17,8 @@ const Maps = () => {
 						options={''}
 						onLoad={(map) => setTimeout(() => setMap(map)) }
 					>
-						{ map && <Marker position={ center }/> }
+						{ map &&
+							state.nearByHospitals.map(({ geometry }) => <Marker position={ geometry.location }/>) }
 					</GoogleMap>
 			</div>
 	);

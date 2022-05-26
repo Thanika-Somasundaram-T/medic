@@ -18,6 +18,7 @@ function App() {
 	const [ state, dispatch ] = useDataLayerValue();
 	const lat= state.latitude;                   //13.0499711;
 	const lng = state.longitude;                 //80.2121306;
+
 	var config = {
 		method: 'get',
 		url: `/nearbysearch/json?location=${lat}%2C${lng}&radius=50000&type=hospital&key=AIzaSyBxaLtbFPhxm_tinXBiwH-YPoCF7VKt_5M`,
@@ -36,8 +37,11 @@ function App() {
 	useEffect(() => {
 		axios(config)
 		.then(function (response) {
-			console.log(JSON.stringify(response.data));
-		})
+			dispatch({
+				type: 'SET_NEAR_BY_HOSPITALS',
+				nearByHospitals: response.data.results,
+			});
+			})
 		.catch(function (error) {
 			console.log(error);
 		});

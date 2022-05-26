@@ -2,7 +2,7 @@
 export const initialState = {
 	latitude: 0,
 	longitude: 0,
-	location: 'mm',
+	location: 'current Location',
 };
 
 const reducer = ( state, action ) => {
@@ -17,7 +17,12 @@ const reducer = ( state, action ) => {
 			return ({
 				...state,
 				location: action.location,
-			})
+			});
+		case 'SET_NEAR_BY_HOSPITALS':
+			return ({
+				...state,
+				nearByHospitals: action.nearByHospitals,
+			});
 		default:
 			return state;  
 	}
