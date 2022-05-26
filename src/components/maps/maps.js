@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import './maps.css';
 import { GoogleMap, Marker } from '@react-google-maps/api';
 import { useDataLayerValue } from '../../dataLayer';

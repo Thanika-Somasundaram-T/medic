@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './location.css';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { useDataLayerValue } from '../../dataLayer';
-import { Autocomplete } from '@react-google-maps/api';
-import { display } from '@mui/system';
 
 
 const Location = () => {
@@ -23,6 +21,7 @@ const Location = () => {
 			latitude: latLng.lat,
 			longitude: latLng.lng,
 		});
+		setValue('')
 	};
 	
 	return (
@@ -40,7 +39,7 @@ const Location = () => {
 							/>
 							<div className='suggestion'>
 								{ loading ? <div>...Loading</div>: null }
-								{ suggestions.slice(0, 3).map((suggestion) => {
+								{ suggestions.slice(0, 3).map((suggestion, i) => {
 									const style = {
 										border: '1px solid black',
 										borderRadius: '10px',
@@ -48,7 +47,7 @@ const Location = () => {
 									};
 
 									return (
-										<div { ...getSuggestionItemProps(suggestion, { style })}>
+										<div key={i} { ...getSuggestionItemProps(suggestion, { style })}>
 											{ suggestion.description }
 										</div>);
 								})

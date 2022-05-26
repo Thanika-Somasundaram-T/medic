@@ -1,6 +1,5 @@
 import React from 'react';
-import { InputBase } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+// import SearchIcon from '@mui/icons-material/Search';
 import Search from './search';
 import Location from './location';
 import './header.css';
