@@ -3,6 +3,16 @@ export const initialState = {
 	latitude: 0,
 	longitude: 0,
 	location: 'current Location',
+	direction: undefined,
+	dLat: 0,
+	dLng: 0,
+	nearByHospitals: [],
+	url: '',
+	placeConfig: {
+		method: 'get',
+		url: ``,
+		headers: { "Access-Control-Allow-Origin": "*" },
+	}
 };
 
 const reducer = ( state, action ) => {
@@ -22,6 +32,20 @@ const reducer = ( state, action ) => {
 			return ({
 				...state,
 				nearByHospitals: action.nearByHospitals,
+			});
+		case 'SET_DIRECTION':
+			return ({
+				...state,
+				direction: action.direction,
+			});
+		case 'SET_PLACE_CONFIG':
+			return ({
+				...state,
+				url: action.url,
+				placeConfig: {
+					...state.playConfig,
+					url: action.url,
+				},
 			});
 		default:
 			return state;  

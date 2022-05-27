@@ -18,14 +18,33 @@ function App() {
 	const [ state, dispatch ] = useDataLayerValue();
 	const lat= state.latitude;                   //13.0499711;
 	const lng = state.longitude;                 //80.2121306;
+	const dLat = state.dLat;
+	const dLng = state.dLng;
 
-	var config = {
+	var configPlaces = {
 		method: 'get',
-		url: `/nearbysearch/json?location=${lat}%2C${lng}&radius=50000&type=hospital&key=AIzaSyBxaLtbFPhxm_tinXBiwH-YPoCF7VKt_5M`,
+		url: `place/nearbysearch/json?location=${lat}%2C${lng}&radius=50000&type=hospital&key=AIzaSyBxaLtbFPhxm_tinXBiwH-YPoCF7VKt_5M`,
 		headers: { "Access-Control-Allow-Origin": "*" },
 	};
 
-	
+	const { isLoaded } = useJsApiLoader({
+		googleMapsApiKey: 'AIzaSyBxaLtbFPhxm_tinXBiwH-YPoCF7VKt_5M',
+		libraries: ['places'],
+	});
+
+	useEffect(() => {
+		axios(state.placeConfig)
+		.then(function (response) {
+			dispatch({
+				type: 'SET_DIRECTION',
+				direction: response.data,
+			})
+		})
+		.catch(function (error) {
+			console.log(error);
+	});
+	}, [state.placeConfig]);
+
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition((position) => dispatch({
 			type: 'SET_CO-ORDINATES',
@@ -35,7 +54,7 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		axios(config)
+		axios(configPlaces)
 		.then(function (response) {
 			dispatch({
 				type: 'SET_NEAR_BY_HOSPITALS',
@@ -47,12 +66,10 @@ function App() {
 		});
 	}, [state.location]);
 
-	const { isLoaded } = useJsApiLoader({
-		googleMapsApiKey: 'AIzaSyBZ0SmSKra8deD2NxtWbjPtCz2epx-8tGs',
-		libraries: ['places'],
-	});
 	if (!isLoaded) return <div>Loading...</div>
+
 	console.log(state);
+
 	return (
 		<div className="App">
 			<Header />

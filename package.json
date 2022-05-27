@@ -2,7 +2,7 @@
 	"name": "medic",
   "version": "0.1.0",
   "private": true,
-	"proxy": "https://maps.googleapis.com/maps/api/place",
+	"proxy": "https://maps.googleapis.com/maps/api",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",

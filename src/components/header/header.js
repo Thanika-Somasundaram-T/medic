@@ -8,8 +8,8 @@ const Header = () => {
 	return (
 		<div className='header-root'>
 			<h1 className='header-item-1'>MEDIC</h1>
-			<Search className='header-item-2'/>
 			<Location className='header-item-3'/>
+			<Search className='header-item-2'/>
 		</div>
 	);
 }
