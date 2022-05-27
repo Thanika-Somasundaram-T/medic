@@ -64,7 +64,7 @@ function App() {
 		.catch(function (error) {
 			console.log(error);
 		});
-	}, [state.location]);
+	}, [state.latitude, state.longitude]);
 
 	if (!isLoaded) return <div>Loading...</div>
 
