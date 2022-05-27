@@ -19,7 +19,7 @@ const Maps = () => {
 	return (
 			<div className='map-root'>
 				<GoogleMap
-						zoom={ 14 }
+						zoom={ 15 }
 						center={ center }
 						mapContainerClassName='map'
 						onLoad={(map) => setTimeout(() => setMap(map)) }
